@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wordz - Word matching game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fonts.css">
+</head>
+<body>
+    <!-- Title -->
+    <header>
+        <h1>Wordz</h1>
+        <p>word matching game</p>
+    </header>
+
+    <!-- Choose level -->
+    <div class="levels">
+        <h2 class="levelText">Choose difficulty:</h2>
+        <button class="levelBtn" id="easy">Easy</button>
+        <button class="levelBtn" id="medium">Medium</button>
+        <button class="levelBtn" id="hard">Hard</button>
+    </div>
+
+    <!-- Get ready countdown -->
+    <div class="getReady">Get ready: <span id="getReady"></span></div>
+
+    <!-- Intro text and word display -->
+    <section class="intro">
+        <h3>Type in the match word in <span id="seconds"></span> seconds.</h3>
+        <div id="wordDisplay"></div>
+    </section>
+
+    <!-- Input field, score, timer, message -->
+    <section class="game">
+        <!-- Input field -->
+        <input type="text" id="wordInput" placeholder="Start typing.." autofocus autocomplete="off">
+        <!-- Message -->
+        <h3 id="message"></h3>
+        <!-- Container for score and timer -->
+        <div class="game_data">
+            <!-- Score -->
+            <h4>Score: <span id="score"></span></h4>
+            <!-- Timer -->
+            <h4>Time: <span id="time"></span> seconds</h4>
+        </div>
+    </section>
+
+
+    <!-- Game ended -->
+    <div class="gameOver">
+        <h2>GAME OVER</h2>
+        <p>Your score: <span id="yourScore"></span></p>
+        <p class="highscore_container">Highscore: <span id="highscore"></span> <span id="deleteHighscore"><i class="material-icons">delete_forever</i></span></p>
+        <button class="levelBtn" id="again">Play again ?</button>
+    </div>
+
+    <!-- Information box -->
+    <section class="info">
+        <div class="infoBox">
+            <h2>Info</h2>
+            <p>Choose between three levels of difficulty. When the get ready timer reaches 0, you will be automaticlly focused onto the input field. Start typing! Match the typed word with the one being displayed above the input field to gain points. If the time reaches 0, the game is over and you can play again. Have fun :)</p>
+        </div>
+    </section>
+
+    <!-- Options buttons -->
+    <div class="optionButtons">
+        <a href="https://github.com/pecko95" title="GitHub" target="_blank"><i class="material-icons">code</i></a>
+        <button title="Info" id="infoButton"><i class="material-icons">info</i></button>
+    </div>
+
+    <!-- Script file link -->
+    <script src="main.js"></script>
+</body>
+</html>

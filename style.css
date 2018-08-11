@@ -1,0 +1,292 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #111;
+    color: #0ec6a8;
+    overflow: hidden;
+}
+header h1{
+    font-family: "Paytone One";
+    font-size: 70px;
+    text-align: center;
+}
+header p{
+    font-family: "Montserrat SemiBold";
+    font-style: italic;
+    color: #eee;
+    font-size: 12px;
+    text-align: center;
+}
+/* MATERIAL DESIGN ICONS CSS */
+.material-icons {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;  /* Preferred icon size */
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+  
+	/* Support for all WebKit browsers. */
+	-webkit-font-smoothing: antialiased;
+	/* Support for Safari and Chrome. */
+	text-rendering: optimizeLegibility;
+  
+	/* Support for Firefox. */
+	-moz-osx-font-smoothing: grayscale;
+  
+	/* Support for IE. */
+	font-feature-settings: 'liga';
+}
+
+.game{
+    display: none;
+    margin: 0 auto;
+    text-align: center;
+}
+#message{
+    font-family: "Montserrat SemiBold";
+    margin: 10px 0;
+    color: #eee;
+}
+#wordInput{
+    background-color: #eee;
+    padding: 5px;
+    border: none;
+    border-radius: 2px;
+    width: 250px;
+    height: 35px;
+    font-family: "Montserrat Regular";
+    outline: none;
+}
+#wordInput::placeholder{
+    color: #222;
+    font-family: "Montserrat Medium";
+}
+.game .game_data{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Montserrat Regular";
+}
+.game .game_data > *{
+    margin: 5px 15px;
+}
+#score, #time{
+    color: #eee;
+    font-size: 22px;
+    font-family: "Montserrat Black";
+}
+.intro{
+    display: none;
+    text-align: center;
+    margin: 10px 0;
+    font-family: "Montserrat Medium";
+}
+.intro #seconds{
+    color: #eee;
+    font-size: 22px;
+    font-family: "Montserrat Black";
+}
+#wordDisplay{
+    font-size: 30px;
+    color: #eee;
+    font-family: "Montserrat SemiBold";
+}
+.getReady{
+    display: none;
+    text-align: center;
+    font-size: 30px;
+    text-transform: uppercase;
+    color: #eee;
+    font-family: "Montserrat Black";
+}
+/* seconds */
+#getReady{
+    font-family: "Montserrat Black";
+    font-size: 45px;
+    opacity: 1;
+    transform:scale(1);
+    transition: 0.5s ease;
+}
+.levels{
+    margin: 45px 0;
+    text-align: center;
+}
+.levels h2{
+    font-family: "Montserrat Medium";
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+.levelBtn{
+    padding: 8px;
+    border: none;
+    border-radius: 3px;
+    background-color: #f5f5f5;
+    font-family: "Montserrat SemiBold";
+    cursor: pointer;
+    margin: 0 3px;
+    transition: 0.2s ease;
+    outline: none;
+}
+.levelBtn:hover{
+    background-color: #009b76;
+    color: #f5f5f5;
+}
+.levelBtn:hover:nth-child(3){
+    background-color: goldenrod;
+}
+.levelBtn:hover:nth-child(4){
+    background-color: #e1302a;
+    position: re;
+}
+#again:hover {
+    background-color: #009b76;
+}
+/* Info box */
+.info{
+    /* background-color: #fff; */
+    width: 100%;
+    height: 180px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+}
+.infoBox{
+    padding: 10px;
+    width: 450px;
+    text-align: center;
+    background-color: #22222260;
+    margin: 0 auto;
+    transform: translateY(200px);
+    margin-bottom: 25px;
+    transition: 0.5s ease;
+}
+.infoBoxActive{
+    transform: translateY(-10px);
+}
+.infoBox h2{
+    font-family: "Montserrat SemiBold";
+    text-transform: uppercase;
+    color: #0ec6a8;
+    font-size: 28px;
+    letter-spacing: 3px;
+}
+.infoBox p {
+    font-family: "Montserrat Medium";
+    color: #f5f5f5;
+    text-align: left;
+}
+
+/* Game over box */
+.gameOver{
+    display: none;
+    margin: 25px auto 0 auto;
+    padding: 5px;
+    width: 350px;
+    background-color: #22222240;
+    text-align: center;
+}
+.gameOver h2{
+    font-family: "Montserrat SemiBold";
+    font-size: 35px;
+    color: #eee;
+}
+.gameOver p{
+    font-family: "Montserrat Regular";
+}
+.highscore_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.highscore_container > *{
+    margin: 0 5px;
+}
+#yourScore, #highscore{
+    color: #eee;
+    font-family: "Montserrat SemiBold";
+    font-size: 18px;
+}
+#deleteHighscore{
+    font-size: 14px;
+    cursor: pointer;
+}
+#deleteHighscore:hover{
+    color: #eee;
+    animation: delete 1s ease forwards infinite;
+}
+@keyframes delete{
+    0%{
+        transform: rotate(0deg) scale(1)
+    }
+    35%{
+        transform: rotate(-15deg) scale(0.95)
+    }
+    70%{
+        transform: rotate(15deg) scale(1.15)
+    }
+    100%{
+        transform: rotate(0deg) scale(1);
+    }
+}
+.gameOver > *{
+    margin: 10px 0;
+}
+
+/* Bottom buttons */
+.optionButtons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: 9999;
+}
+.optionButtons a{
+    text-decoration: none;
+    color: #eee;
+}
+.optionButtons a i{
+    font-size: 35px;
+    transition: 0.2s ease;
+}
+.optionButtons a:hover i{
+    color: #0ec6a8;
+}
+.optionButtons button{
+    border: none;
+    background: none;
+    color: #eee;
+    cursor: pointer;
+    outline: none;
+}
+.optionButtons button i {
+    font-size: 35px;
+    transition: 0.2s ease;
+}
+.optionButtons button:hover i {
+    color: #0ec6a8;
+}
+
+@media (max-width:460px){
+    .info{
+        height: 300px;
+    }
+    .infoBox{
+        width: 85%;
+        transform: translateY(350px)
+    }
+    .infoBoxActive {
+        transform: translateY(-10px)
+    }
+}
