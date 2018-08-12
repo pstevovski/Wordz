@@ -147,6 +147,9 @@ header p{
     background-color: #e1302a;
     position: re;
 }
+#again{
+    z-index: 999999;
+}
 #again:hover {
     background-color: #009b76;
 }
