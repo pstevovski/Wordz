@@ -17,11 +17,11 @@ const buttons = document.querySelector(".levels");
 // Array of words to be used.
 const words = ["route","soil","cotton","beer","association","tolerate","rib","organ","save","sleeve","ask","deserve","activity","bike","absorption","take","restaurant","closed","cross","prefer","singer","intervention","establish","affect","paper","pottery","restless","ash","sound","census","feign","ethnic","flight","hate","master","army","overcharge","heavy","character","manufacturer","tin","formal","bless","bomb","bag","domestic","green","look","vacuum","global","behave","captivate","experience","emotion","operational","transparent","tape","hike","dead","highlight","Koran","pension","expertise","laborer","illustrate","adjust","portion","hunter","manufacture","manager","state","wheat","easy","officer","productive","fragment","dine","articulate","kettle","operation","undress","rumor","customer","bet","kitchen","belong","sunshine","cool","recycle","ton","annual","ridge","throw","debut","essay","bait","waste","shadow","electronics","rabbit","liberty","unfair","pedestrian","load","fund","custody","detail","Bible","duck","orthodox","watch","culture","able","compliance","domination","division","chimney","wage","bang","professional","insure","mystery","pour","hypothesis","conceive","coincidence","faithful","role","depressed","oak","survival","minor","nightmare","sex","technology","inch","norm","anniversary","boot","radical","urine","recession","limited","rescue","disclose","innovation","classify","rank","lonely","outlook","threshold","bundle","dentist","goalkeeper","radio","partnership","temple","still","infection","pump","ignite","dream","pillow","simplicity","remedy","river","organisation","ancestor","ice cream","extension","advantage","abuse","oppose","negative","skate","assembly","site","tank","partner","quantity","scrape","nut","exit","card","explode","helmet","tenant","trend","picture","herb","rifle","base","predict","investigation","fix","scenario","prescription","prisoner","sphere"]
 
-// Time of the level
+// Time for the level
 let currentLevel;
 
-// Easy level
-document.getElementById("easy").addEventListener("click", ()=>{
+// EASY LEVEL
+document.getElementById("easy").addEventListener("click", (e)=>{
     // Hid the buttons for level selection and show the game window.
     gameWindow.style.display = "block";
     buttons.style.display = "none";
@@ -29,11 +29,15 @@ document.getElementById("easy").addEventListener("click", ()=>{
     currentLevel = levels.easy;
     seconds.innerHTML = currentLevel;
     time = currentLevel;
+
+    // Store difficulty for points variations.
+    const target = e.target.id;
+    sessionStorage.setItem("checkDifficulty", target);
     init();
 })
 
-// Medium level
-document.getElementById("medium").addEventListener("click", ()=>{
+// MEDIUM LEVEL
+document.getElementById("medium").addEventListener("click", (e)=>{
     // Hid the buttons for level selection and show the game window.
     gameWindow.style.display = "block";
     buttons.style.display = "none";
@@ -41,10 +45,14 @@ document.getElementById("medium").addEventListener("click", ()=>{
     currentLevel = levels.medium;
     seconds.innerHTML = currentLevel;
     time = currentLevel;
+
+    // Store difficulty for points variations.
+    const target = e.target.id;
+    sessionStorage.setItem("checkDifficulty", target);
     init();
 })
-// Hard level
-document.getElementById("hard").addEventListener("click", ()=>{
+// HARD LEVEL
+document.getElementById("hard").addEventListener("click", (e)=>{
     // Hid the buttons for level selection and show the game window.
     gameWindow.style.display = "block";
     buttons.style.display = "none";
@@ -52,13 +60,17 @@ document.getElementById("hard").addEventListener("click", ()=>{
     currentLevel = levels.hard;
     seconds.innerHTML = currentLevel;
     time = currentLevel;
+
+    // Store difficulty for points variations.
+    const target = e.target.id;
+    sessionStorage.setItem("checkDifficulty", target);
     init();
 })
 
 // Levels
 const levels = {
-    easy: 8,
-    medium: 5,
+    easy: 6,
+    medium: 4,
     hard: 2
 }
 
@@ -140,7 +152,6 @@ function countdown(){
 };
 
 function startGame(){
-    // If the word is matched.
     if( wordMatch() ) {
         isPlaying = true;
         showWord(words);
@@ -148,9 +159,20 @@ function startGame(){
         time = currentLevel + 1;
         // Clear the input field
         wordInput.value = "";
-        // Increase the score by 1
-        score++;
+        // Increase the score according to difficulty.
+        let checkDifficulty = sessionStorage.getItem("checkDifficulty");
+        // If its EASY level, increment by 1.
+        if( checkDifficulty === "easy") {
+            score++;
+        } // If its MEDIUM level, increment by 2. 
+        else if ( checkDifficulty === "medium") {
+            score += 2;
+        } // If its HARD level, increment by 3.
+         else if ( checkDifficulty === "hard") {
+            score += 3;
+        }
     }
+    // Display the user`s score.
     scoreDisplay.innerHTML = score;
 };
 
@@ -220,3 +242,8 @@ document.getElementById("infoButton").addEventListener("click", ()=>{
     const infoBox = document.querySelector(".infoBox");
     infoBox.classList.toggle("infoBoxActive");
 })
+
+// Clear session storage for difficulty.
+window.onload = function clear() {
+    sessionStorage.removeItem("checkDifficulty");
+}
