@@ -148,7 +148,7 @@ header p{
     position: re;
 }
 #again{
-    z-index: 999999;
+    z-index: 9;
 }
 #again:hover {
     background-color: #009b76;
@@ -253,7 +253,7 @@ header p{
     position: absolute;
     right: 10px;
     bottom: 10px;
-    z-index: 9999;
+    z-index: 9;
 }
 .optionButtons a{
     text-decoration: none;
@@ -284,12 +284,15 @@ header p{
 @media (max-width:460px){
     .info{
         height: 300px;
+        z-index: -1;
     }
     .infoBox{
         width: 85%;
-        transform: translateY(350px)
+        transform: translateY(350px);
+        z-index: -1;
     }
     .infoBoxActive {
-        transform: translateY(-10px)
+        transform: translateY(-10px);
+        z-index: -1;
     }
 }
