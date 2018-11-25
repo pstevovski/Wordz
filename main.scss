@@ -1,0 +1,358 @@
+$colors:(
+    primary: #111,
+    titleText: #0ec6a8,
+    bgColorTwo: #f5f5f5,
+    textColor: #eee,
+    easy: #009b76,
+    medium: orange,
+    hard: #e1302a,
+);
+
+// Text variables
+$headerText: "Paytone One";
+$mainText: "Montserrat SemiBold";
+$inputText: "Montserrat Regular";
+$placeholderText: "Montserrat Medium";
+$boldedText: "Montserrat Black";
+
+@function color($colorName) {
+    @return map-get($colors, $colorName);
+}
+
+// Mixin for smaller screen
+$smallerScreen: 460px;
+
+@mixin smallerScreen{
+    @media (max-width: #{$smallerScreen}) {
+        @content;
+    };
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: color(primary);
+    overflow: hidden;
+
+    .getReady {
+        display: none;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 30px;
+        color: color(textColor);
+        font-family: $boldedText;
+
+        // Seconds display for Get Ready
+        #getReady {
+            font-family: $boldedText;
+            font-size: 45px;
+            transition: 0.5s ease;
+            color: color(hard);
+        }
+    }
+}
+
+// The header
+header {
+    h1 {
+        font-family: $headerText;
+        font-size: 70px;
+        letter-spacing: 3px;
+        text-align: center;
+    }
+
+    p {
+        font-family: $mainText;
+        font-style: italic;
+        font-size: 12px;
+        color: color(textColor);
+        text-align: center;
+    }
+}
+
+// Levels menu
+.levels {
+    margin: 45px 0px;
+    text-align: center;
+
+    h2 {
+        font-family: $headerText;
+        font-size: 35px;
+        margin-bottom: 15px;
+    }
+
+    .levelBtn {
+        padding: 8px;
+        margin: 0 3px;
+        border: none;
+        border-radius: 3px;
+        background-color: color(bgColorTwo);
+        font-family: $mainText;
+        cursor: pointer;
+        transition: 0.2s ease;
+        outline: none;
+    }
+
+    .levelBtn:hover{
+        background-color: color(easy);
+        color: color(textColor);
+    }
+
+    .levelBtn:hover:nth-child(3) {
+        background-color: color(medium);
+    }
+    .levelBtn:hover::nth-child(4) {
+        background-color: color(hard);
+    }
+}
+
+// Intro section
+.intro {
+    display: none;
+    text-align: center;
+    margin: 10px 0;
+    font-family: $placeholderText;
+
+    #seconds {
+        color: color(textColor);
+        font-size: 22px;
+        font-family: $boldedText;
+    }
+
+    #wordDisplay {
+        font-size: 30px;
+        color: color(textColor);
+        font-family: $mainText;
+    }
+}
+
+// Game section
+.game {
+    display: none;
+    margin: 0 auto;
+    text-align: center;
+
+    #message {
+        font-family: $mainText;
+        margin: 10px 0;
+        color: color(textColor);
+    }
+
+    #wordInput {
+        padding: 5px;
+        width: 250px;
+        height: 35px;
+        border: none;
+        border-radius: 3px;
+        background-color: color(textColor);
+
+        font-family: $inputText;
+        outline: none;
+    }
+    #wordInput::placeholder {
+        color: #222;
+        font-family: $placeholderText;
+    }
+
+    .game_data {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: $inputText;
+
+        * {
+            margin: 5px 15px;
+        }
+
+        #score, #time {
+            color: color(textColor);
+            font-size: 22px;
+            font-family: $boldedText;
+        }
+    }
+}
+
+// Game over menu
+.gameOver {
+    margin: 25px auto 0 auto;
+    padding: 5px;
+    display: none;
+    width: 350px;
+    background-color: #22222240;
+    text-align: center;
+
+    h2 {
+        font-family: $mainText;
+        font-size: 35px;
+        color: color(textColor);
+    }
+
+    p {
+        font-family: $inputText;
+    }
+
+    .highscore_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        * {
+            margin: 0 5px;
+        }
+
+        #deleteHighscore{
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        #deleteHighscore:hover{
+            color: color(textColor);
+            animation: delete 1s ease forwards infinite;
+        }
+
+        #again{
+            z-index: 9;
+        }
+        #again:hover {
+            background-color: color(easy);
+        }
+    }
+    
+    #yourScore, #highscore {
+        color: color(textcolor);
+        font-family: $mainText;
+        font-size: 18px;
+    }
+
+    * {
+        margin: 10px 0;
+    }
+}
+
+// Info box
+.info {
+    width: 100%;
+    height: 180px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+
+    @include smallerScreen{
+        height: 300px;
+        z-index: -1;
+    }
+
+    .infoBox{
+        padding: 10px;
+        margin: 0 auto;
+        width: 450px;
+        text-align: center;
+        background-color: #22222260;
+        transform: translateY(200px);
+        margin-bottom: 25px;
+        transition: 0.5s ease;
+
+        h2 {
+            font-family: $mainText;
+            text-transform: uppercase;
+            color: color(titleText);
+            font-size: 28px;
+            letter-spacing: 3px;
+        }
+
+        p {
+            font-family: $placeholderText;
+            color: color(textColor);
+            text-align: left;
+        }
+
+        @include smallerScreen {
+            width: 85%;
+            transform: translateY(350px);
+            z-index: -1;
+        }
+    }
+
+    .infoBoxActive{
+        transform: translateY(-10px);
+
+        @include smallerScreen {
+            transform: translateY(-10px);
+            z-index: -1;
+        }
+    }
+}
+
+// Option buttons
+.optionButtons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: 9;
+
+    a{
+        text-decoration: none;
+        color: color(textColor);
+
+        i{
+            font-size: 35px;
+            transition: 0.2s ease;
+        }
+
+    }
+    a:hover i{
+        color: color(titleText);
+    }
+    
+    button{
+        border: none;
+        background: none;
+        color: #eee;
+        cursor: pointer;
+        outline: none;
+
+        i {
+            font-size: 35px;
+            transition: 0.2s ease;
+        }
+
+    }
+    button:hover i {
+        color: color(titleText);
+    }
+}
+
+/* MATERIAL DESIGN ICONS CSS */
+.material-icons {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;  /* Preferred icon size */
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+  
+	/* Support for all WebKit browsers. */
+	-webkit-font-smoothing: antialiased;
+	/* Support for Safari and Chrome. */
+	text-rendering: optimizeLegibility;
+  
+	/* Support for Firefox. */
+	-moz-osx-font-smoothing: grayscale;
+  
+	/* Support for IE. */
+	font-feature-settings: 'liga';
+}
+
